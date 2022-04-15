@@ -80,3 +80,12 @@ body {
         background-color: #219ef2;
     }
   }
+
+  .form-check-input:checked {
+      background-color: #000000 !important;
+      border-color: #000000 !important;
+  }
+
+  .form-check-input:disabled {
+      opacity: 1 !important;
+  }

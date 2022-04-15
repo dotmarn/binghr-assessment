@@ -94,12 +94,12 @@
                             <div class="col">
                                 <input type="text" name="firstname" id="firstname" class="form-control"
                                     placeholder="First name" aria-label="First name">
-                                    <p class="text-danger" id="error_firstname"></p>
+                                <p class="text-danger" id="error_firstname"></p>
                             </div>
                             <div class="col">
                                 <input type="text" name="lastname" id="lastname" class="form-control"
                                     placeholder="Last name" aria-label="Last name">
-                                    <p class="text-danger" id="error_lastname"></p>
+                                <p class="text-danger" id="error_lastname"></p>
                             </div>
                         </div>
 
@@ -107,12 +107,12 @@
                             <div class="col">
                                 <input type="email" name="email" id="email" class="form-control" placeholder="Email ID*"
                                     aria-label="Email ID*">
-                                    <p class="text-danger" id="error_email"></p>
+                                <p class="text-danger" id="error_email"></p>
                             </div>
                             <div class="col">
                                 <input type="text" name="phone" id="phone" class="form-control" placeholder="Phone"
                                     aria-label="Phone">
-                                    <p class="text-danger" id="error_phone"></p>
+                                <p class="text-danger" id="error_phone"></p>
                             </div>
                             <div class="col">
                                 <select name="role" id="role" class="form-select">
@@ -129,20 +129,57 @@
                             <div class="col">
                                 <input type="text" name="username" id="username" class="form-control"
                                     placeholder="Username*" aria-label="Username*">
-                                    <p class="text-danger" id="error_username"></p>
+                                <p class="text-danger" id="error_username"></p>
                             </div>
                             <div class="col">
                                 <input type="password" name="password" id="password" class="form-control"
                                     placeholder="Password" aria-label="Password">
-                                    <p class="text-danger" id="error_password"></p>
+                                <p class="text-danger" id="error_password"></p>
                             </div>
                             <div class="col">
                                 <input type="password" name="password_confirmation" id="confirm_password"
                                     class="form-control" placeholder="Confirm Password" aria-label="Confirm Password">
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="table-responsive">
+                                    <table class="table bg-white rounded shadow-sm">
+                                        <thead class="">
+                                            <tr class="table-secondary text-secondary">
+                                                <th scope="col" class="px-4">Module Permission</th>
+                                                <th scope="col">Read</th>
+                                                <th scope="col">Write</th>
+                                                <th scope="col">Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($roles as $key => $role)
+                                                <tr class="px-4">
+                                                    <td class="">
+                                                        {{ $role->name }}
+                                                    </td>
+
+                                                    @foreach ([1,2,3] as $key => $permission)
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value=""
+                                                                {{ in_array($permission, $role->permissions->pluck('id')->toArray()) ? 'checked' : '' }} disabled>
+                                                        </div>
+                                                    </td>
+                                                    @endforeach
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="clearfix float-end">
-                            <button type="submit" class="btn btn-primary"><span id="btn-submit"></span> <span id="loader"><i class="fas fa-spinner fa-spin"></i></span></button>
+                            <button type="submit" class="btn btn-primary"><span id="btn-submit"></span> <span id="loader"><i
+                                        class="fas fa-spinner fa-spin"></i></span></button>
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                         </div>
                     </form>

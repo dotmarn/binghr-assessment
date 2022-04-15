@@ -15,7 +15,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $users = User::with('roles')->latest()->get();
-        $roles = Role::all();
+        $roles = Role::with('permissions')->get();
         return view('welcome', compact('users', 'roles'));
     }
 
@@ -29,7 +29,7 @@ class EmployeeController extends Controller
                 'username' => ['required', 'string', $request->action_type == 'add' ? 'unique:users' : 'unique:users,username,'.$request->id],
                 'email' => ['required', 'email', $request->action_type == 'add' ? 'unique:users' : 'unique:users,email,'.$request->id],
                 'phone' => ['required', 'digits:11', $request->action_type == 'add' ? 'unique:users' : 'unique:users,phone,'.$request->id],
-                'password' => [$request->action_type == 'add' ? ['required','confirmed'] : 'nullable', Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()],
+                'password' => [$request->action_type == 'add' ? 'required' : 'nullable', 'confirmed', Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()],
                 'role' => ['required', 'numeric']
             ]
         );

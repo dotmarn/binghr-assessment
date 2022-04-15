@@ -72,21 +72,6 @@
             event.preventDefault();
             $("#loader").show();
             if ($('#action_type').val() == 'add') {
-                if ($('#password').val() == "") {
-                    $('#error_password').text('Password field is required.');
-                    $("#loader").hide();
-                    return;
-                }
-
-                if ($('#password').val() !== $('#confirm_password').val()) {
-                    $("#loader").hide();
-                    swal({
-                        title: 'Notification!!!',
-                        text: 'Password does not match',
-                        icon: 'warning'
-                    });
-                    return;
-                }
 
                 var payload = {
                     username: $('#username').val(),
@@ -96,23 +81,11 @@
                     phone: $('#phone').val(),
                     role: $('#role').val(),
                     password: $('#password').val(),
+                    password_confirmation: $('#confirm_password').val(),
                     action_type: $('#action_type').val()
                 };
 
             } else {
-                // For update check if password field is filled
-                if ($('#password').val() != "") {
-                    if ($('#password').val() !== $('#confirm_password').val()) {
-                        $("#loader").hide();
-                        swal({
-                            title: 'Notification!!!',
-                            text: 'Password does not match',
-                            icon: 'warning'
-                        });
-
-                        return;
-                    }
-                }
 
                 var payload = {
                     id: $('#employee_id').val(),
@@ -123,6 +96,7 @@
                     phone: $('#phone').val(),
                     role: $('#role').val(),
                     password: $('#password').val(),
+                    password_confirmation: $('#confirm_password').val(),
                     action_type: $('#action_type').val()
                 };
             }
