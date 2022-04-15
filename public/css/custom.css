@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+body {
+    font-family: Karla;
+}
+
+  #wrapper {
+    overflow-x: hidden;
+  }
+
+  #sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin 0.25s ease-out;
+    -moz-transition: margin 0.25s ease-out;
+    -o-transition: margin 0.25s ease-out;
+    transition: margin 0.25s ease-out;
+  }
+
+  #sidebar-wrapper .list-group {
+    width: 15rem;
+  }
+
+  #page-content-wrapper {
+    min-width: 100vw;
+    background-color: rgb(217, 224, 255);
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #wrapper.sidebar-bg #sidebar-wrapper {
+    background-color: #219ef2;
+  }
+
+  #menu-toggle {
+    cursor: pointer;
+  }
+
+  .list-group-item {
+    border: none;
+    padding: 15px 30px;
+  }
+
+  .active-link {
+    color: #219ef2;
+    font-weight: bold;
+    border-right-style: solid;
+    border-right-width: 3px !important;
+    border-right-color: #219ef2;
+  }
+
+  .avatar {
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+  }
+
+  .mini-sidebar {
+      background-color: #219ef2;
+  }
+
+  @media (min-width: 768px) {
+    #sidebar-wrapper {
+      margin-left: 0;
+    }
+
+    #page-content-wrapper {
+      min-width: 0;
+      width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+      margin-left: -15rem;
+    }
+
+    #wrapper.sidebar-bg #sidebar-wrapper {
+        background-color: #219ef2;
+    }
+  }

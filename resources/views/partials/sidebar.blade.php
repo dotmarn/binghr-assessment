@@ -1,17 +1,78 @@
-<nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-    <div class="position-sticky pt-md-5">
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-home">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                    </svg>
-                    <span class="ml-2">Dashboard</span>
-                </a>
-            </li>
-        </ul>
+<div class="mini-sidebar text-center" id="mini-sidebar">
+    <div class="list-group list-group-flush mx-auto">
+        <div class="py-5 mt-5">
+            <a href="#" class="list-group-item list-group-item-action bg-transparent">
+                <i class="fas fa-search text-light"></i>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-transparent">
+                <i class="fas fa-briefcase text-light"></i>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-transparent">
+                <i class="far fa-user text-light"></i>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-transparent">
+                <i class="fab fa-rocketchat text-light"></i>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-transparent">
+                <i class="fas fa-file text-light"></i>
+            </a>
+        </div>
+
+        <div class="py-5">
+            <a href="#" class="list-group-item list-group-item-action bg-transparent fw-bold">
+                <i class="fas fa-cog text-light"></i>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-transparent fw-bold">
+                <img src="{{ asset('images/avatar.jpg') }}" class="avatar" alt="" srcset="">
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-transparent fw-bold">
+                <i class="fas fa-align-left text-light" id="menu-toggle"></i>
+            </a>
+        </div>
     </div>
-</nav>
+</div>
+
+<div class="sidebar-bg" id="sidebar-wrapper">
+    <div class="list-group list-group-flush mt-5">
+        <a href="#" class="list-group-item list-group-item-action bg-transparent text-secondary">
+            <i class="fas fa-tachometer-alt me-2"></i>
+            Dashboard
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-transparent text-secondary">
+            <i class="fas fa-users me-2"></i>
+            Users
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-transparent text-secondary">
+            <i class="fas fa-chart-line me-2"></i>
+            Department
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-transparent text-secondary">
+            <i class="fas fa-paperclip me-2"></i>
+            Employee
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-transparent text-secondary">
+            <i class="fas fa-shopping-cart me-2"></i>
+            Activities
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-transparent text-secondary">
+            <i class="fas fa-gift me-2"></i>
+            Holidays
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-transparent text-secondary">
+            <i class="fas fa-comment-dots me-2"></i>
+            Events
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-transparent text-secondary">
+            <i class="fas fa-map-marker-alt me-2"></i>
+            Payroll
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-transparent text-secondary">
+            <i class="fas fa-power-off me-2"></i>
+            Account
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-transparent text-secondary">
+            <i class="fas fa-power-off me-2"></i>
+            Reports
+        </a>
+    </div>
+</div>
