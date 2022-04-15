@@ -76,6 +76,7 @@
                 if ($('#password').val() == "") {
                     $('#error_password').text('Password field is required.');
                     $("#loader").hide();
+                    return;
                 }
 
                 if ($('#password').val() !== $('#confirm_password').val()) {
@@ -85,9 +86,10 @@
                         text: 'Password does not match',
                         icon: 'warning'
                     });
+                    return;
                 }
 
-                let payload = {
+                var payload = {
                     username: $('#username').val(),
                     firstname: $('#firstname').val(),
                     lastname: $('#lastname').val(),
@@ -108,10 +110,12 @@
                             text: 'Password does not match',
                             icon: 'warning'
                         });
+
+                        return;
                     }
                 }
 
-                let payload = {
+                var payload = {
                     employee_id: $('#employee_id').val(),
                     username: $('#username').val(),
                     firstname: $('#firstname').val(),
@@ -135,8 +139,6 @@
                             window.location.reload();
                         });
 
-                    } else if (data.status == 422) {
-                        console.log(data.data);
                     } else {
                         swal({
                             title: 'Notification!!!',
@@ -146,10 +148,52 @@
                     }
                 },
                 error: function (err) {
-                    swal('Whoops!!!', 'Error while communicating with the server', 'warning')
+                    $("#loader").hide();
+                    if (err.status == 422) {
+
+                        let errors = err.responseJSON.data;
+
+                        handleValidationMessages(errors);
+
+                    } else {
+                        swal('Whoops!!!', 'Error while communicating with the server', 'warning')
+                    }
                 }
             });
+
+
         })
+
+        function handleValidationMessages(errors)
+        {
+            if (errors.firstname) {
+                $('#error_firstname').text(errors.firstname[0]);
+            }
+
+            if (errors.lastname) {
+                $('#error_lastname').text(errors.lastname[0]);
+            }
+
+            if (errors.username) {
+                $('#error_username').text(errors.username[0]);
+            }
+
+            if (errors.email) {
+                $('#error_email').text(errors.email[0]);
+            }
+
+            if (errors.phone) {
+                $('#error_phone').text(errors.phone[0]);
+            }
+
+            if (errors.role) {
+                $('#error_role').text(errors.role[0]);
+            }
+
+            if (errors.password) {
+                $('#error_password').text(errors.password[0]);
+            }
+        }
 
     </script>
 </body>
