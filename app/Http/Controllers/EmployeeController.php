@@ -14,7 +14,7 @@ class EmployeeController extends Controller
 {
     public function index()
     {
-        $users = User::with('roles')->get();
+        $users = User::with('roles')->latest()->get();
         $roles = Role::all();
         return view('welcome', compact('users', 'roles'));
     }
