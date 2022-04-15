@@ -14,4 +14,9 @@ class EmployeeController extends Controller
         $roles = Role::all();
         return view('welcome', compact('users', 'roles'));
     }
+
+    public function createOrUpdateUser(Request $request)
+    {
+
+    }
 }
