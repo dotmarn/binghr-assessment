@@ -65,8 +65,14 @@
             document.getElementById('openModal').click();
             $('#title').text('Update User ('+data.employee_id+')');
             $('#action_type').val('update');
+            $('#employee_id').val(data.id);
+            $('#firstname').val(data.firstname);
+            $('#lastname').val(data.lastname);
+            $('#username').val(data.username);
+            $('#email').val(data.email);
+            $('#phone').val(data.phone);
+            $('#role').val(data.roles[0].id);
             $('#btn-submit').text('Update User');
-            console.log(data);
         }
 
         $('#frmUser').submit(function (event) {
@@ -116,7 +122,7 @@
                 }
 
                 var payload = {
-                    employee_id: $('#employee_id').val(),
+                    id: $('#employee_id').val(),
                     username: $('#username').val(),
                     firstname: $('#firstname').val(),
                     lastname: $('#lastname').val(),
@@ -138,13 +144,6 @@
                         swal('Notification!!!', data.message, 'success').then((value) => {
                             window.location.reload();
                         });
-
-                    } else {
-                        swal({
-                            title: 'Notification!!!',
-                            text: data.message,
-                            icon: 'warning'
-                        })
                     }
                 },
                 error: function (err) {

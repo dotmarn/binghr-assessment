@@ -89,6 +89,7 @@
                 <div class="modal-body">
                     <form id="frmUser">
                         <input type="hidden" name="action_type" id="action_type" value="">
+                        <input type="hidden" name="employee_id" id="employee_id" value="">
                         <div class="row mb-4">
                             <div class="col">
                                 <input type="text" name="firstname" id="firstname" class="form-control"
