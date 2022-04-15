@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DefaultRoleSeeder extends Seeder
 {
@@ -14,6 +15,17 @@ class DefaultRoleSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $roles = [
+            "Super Admin",
+            "Admin",
+            "Employee",
+            "HR Admin"
+        ];
+
+        foreach ($roles as $key => $role) {
+            Role::updateOrCreate([
+                'name' => $role
+            ]);
+        }
     }
 }
