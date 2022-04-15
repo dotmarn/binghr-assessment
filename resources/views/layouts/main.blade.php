@@ -56,7 +56,7 @@
 
         function editUser(data) {
             document.getElementById('openModal').click();
-            $('#title').text('Update User ('+data.employee_id+')');
+            $('#title').text('Update User (' + data.employee_id + ')');
             $('#action_type').val('update');
             $('#employee_id').val(data.id);
             $('#firstname').val(data.firstname);
@@ -68,7 +68,7 @@
             $('#btn-submit').text('Update User');
         }
 
-        $('#frmUser').submit(function (event) {
+        $('#frmUser').submit(function(event) {
             event.preventDefault();
             $("#loader").show();
             if ($('#action_type').val() == 'add') {
@@ -132,14 +132,13 @@
                 type: 'POST',
                 dataType: "json",
                 data: payload,
-                success: function (data) {
-                    if (data.status == 200) {
-                        swal('Notification!!!', data.message, 'success').then((value) => {
-                            window.location.reload();
-                        });
-                    }
+                success: function(data) {
+                    $("#loader").hide();
+                    swal('Notification!!!', data.message, 'success').then((value) => {
+                        window.location.reload();
+                    });
                 },
-                error: function (err) {
+                error: function(err) {
                     $("#loader").hide();
                     if (err.status == 422) {
 
@@ -156,8 +155,7 @@
 
         })
 
-        function handleValidationMessages(errors)
-        {
+        function handleValidationMessages(errors) {
             if (errors.firstname) {
                 $('#error_firstname').text(errors.firstname[0]);
             }
@@ -187,6 +185,37 @@
             }
         }
 
+        function deleteUser(user) {
+            var payload = {
+                id: user.id
+            };
+            swal("Confirm Action", "Are you sure you want to delete this record?", {
+                    buttons: true,
+                    dangerMode: true,
+                    icon: 'warning'
+                })
+                .then((value) => {
+                    if (value) {
+                        $.ajax({
+                            url: '/api/delete-user',
+                            type: 'POST',
+                            dataType: "json",
+                            data: payload,
+                            success: function(data) {
+                                $("#loader").hide();
+                                swal('Notification!!!', data.message, 'success').then((value) => {
+                                    window.location.reload();
+                                });
+                            },
+                            error: function(err) {
+                                $("#loader").hide();
+                                swal('Whoops!!!', 'Error while communicating with the server', 'warning')
+                            }
+                        });
+                    }
+                });
+
+        }
     </script>
 </body>
 

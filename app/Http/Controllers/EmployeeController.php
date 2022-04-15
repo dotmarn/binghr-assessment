@@ -69,4 +69,14 @@ class EmployeeController extends Controller
             ], Response::HTTP_OK);
         }
     }
+
+    public function deleteUser(Request $request)
+    {
+        $user = User::where('id', $request->id)->first();
+        $user->delete();
+        return response()->json([
+            'message' => 'Record deleted successfully',
+            'data' => null
+        ], Response::HTTP_OK);
+    }
 }

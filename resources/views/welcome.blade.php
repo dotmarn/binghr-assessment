@@ -60,7 +60,7 @@
                                             <i class="far fa-edit text-secondary"></i>
                                         </button>
 
-                                        <button class="btn">
+                                        <button class="btn" onclick='deleteUser(<?php echo json_encode($user); ?>)'>
                                             <i class="fas fa-trash text-secondary"></i>
                                         </button>
                                     </td>

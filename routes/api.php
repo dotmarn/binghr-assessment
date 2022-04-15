@@ -19,4 +19,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/create-or-update-user', [EmployeeController::class, 'createOrUpdateUser']);
+Route::controller(EmployeeController::class)->group(function() {
+
+    Route::post('/create-or-update-user', 'createOrUpdateUser');
+
+    Route::post('/delete-user', 'deleteUser');
+
+});
+
