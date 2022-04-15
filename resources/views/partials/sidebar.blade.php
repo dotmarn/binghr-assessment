@@ -35,10 +35,10 @@
 <div class="sidebar-bg" id="sidebar-wrapper">
     <div class="list-group list-group-flush mt-5">
         <a href="#" class="list-group-item list-group-item-action bg-transparent text-secondary">
-            <i class="fas fa-tachometer-alt me-2"></i>
+            <i class="fas fa-briefcase me-2"></i>
             Dashboard
         </a>
-        <a href="#" class="list-group-item list-group-item-action bg-transparent text-secondary">
+        <a href="#" class="list-group-item list-group-item-action bg-transparent text-secondary {{ request()->is('/') ? 'active-link' : '' }}">
             <i class="fas fa-users me-2"></i>
             Users
         </a>
