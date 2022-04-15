@@ -22,51 +22,53 @@
             </div>
 
             <div class="col px-4">
-                <table class="table bg-white rounded shadow-sm table-hover table-responsive">
-                    <thead>
-                        <tr class="table-secondary text-secondary">
-                            <th scope="col" class="px-4">Name</th>
-                            <th scope="col">Create Date</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($users as $user)
-                            <tr class="px-4">
-                                <td class="d-flex align-items-center">
-                                    <div class="me-2 px-4">
-                                        <img src="{{ asset('images/avatar.jpg') }}" class="avatar" alt=""
-                                            srcset="">
-                                    </div>
-                                    <div class="me-5">
-                                        <h6 class="my-0">{{ $user->firstname . ' ' . $user->lastname }}</h6>
-                                        <p class="text-muted my-0">{{ $user->email }}</p>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        @foreach ($user->roles as $role)
-                                            <span
-                                                class="rounded-pill {{ $role->name == 'Super Admin'? 'bg-danger': ($role->name == 'Admin'? 'bg-primary': ($role->name == 'Employee'? 'bg-secondary': 'bg-success')) }} px-2 py-1 text-light">{{ $role->name }}</span>
-                                        @endforeach
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="py-2">
-                                        {{ \Carbon\Carbon::parse($user->created_at)->format('j F, Y') }}
-                                    </div>
-                                </td>
-                                <td class="d-flex align-items-center">
-                                    <button class="btn" onclick='editUser(<?php echo json_encode($user); ?>)'>
-                                        <i class="far fa-edit text-secondary"></i>
-                                    </button>
-
-                                    <button class="btn">
-                                        <i class="fas fa-trash text-secondary"></i>
-                                    </button>
-                                </td>
+                <div class="table-responsive">
+                    <table class="table bg-white rounded shadow-sm">
+                        <thead>
+                            <tr class="table-secondary text-secondary">
+                                <th scope="col" class="px-4">Name</th>
+                                <th scope="col">Create Date</th>
+                                <th scope="col">Action</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($users as $user)
+                                <tr class="px-4">
+                                    <td class="d-flex align-items-center">
+                                        <div class="me-2 px-4">
+                                            <img src="{{ asset('images/avatar.jpg') }}" class="avatar" alt=""
+                                                srcset="">
+                                        </div>
+                                        <div class="me-5">
+                                            <h6 class="my-0">{{ $user->firstname . ' ' . $user->lastname }}</h6>
+                                            <p class="text-muted my-0">{{ $user->email }}</p>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            @foreach ($user->roles as $role)
+                                                <span
+                                                    class="rounded-pill {{ $role->name == 'Super Admin'? 'bg-danger': ($role->name == 'Admin'? 'bg-primary': ($role->name == 'Employee'? 'bg-secondary': 'bg-success')) }} px-2 py-1 text-light">{{ $role->name }}</span>
+                                            @endforeach
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="py-2">
+                                            {{ \Carbon\Carbon::parse($user->created_at)->format('j F, Y') }}
+                                        </div>
+                                    </td>
+                                    <td class="d-flex align-items-center">
+                                        <button class="btn" onclick='editUser(<?php echo json_encode($user); ?>)'>
+                                            <i class="far fa-edit text-secondary"></i>
+                                        </button>
+
+                                        <button class="btn">
+                                            <i class="fas fa-trash text-secondary"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
