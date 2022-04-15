@@ -65,7 +65,6 @@
                         <i class="fas fa-user me-2 text-dark"></i>
                     </a>
                 </li>
-
             </ul>
         </div>
     </div>
